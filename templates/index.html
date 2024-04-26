@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/d.css') }}">
+</head>
+<body>
+
+
+
+
+
+    <h1>Записи</h1>
+    <a href="{{ url_for('new_post') }}"><button>Создать новую запись</button></a>
+    <ul>
+        {% for post in posts %}
+        <li><a href="{{ url_for('get_post', post_id=post['id']) }}">{{ post['title'] }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <section class="articles">
+
+<ul>
+        {% for post in posts %}
+    <article>
+    <div class="article-wrapper">
+      <figure>
+        <img src="https://picsum.photos/id/1005/800/450" alt="" />
+      </figure>
+      <div class="article-body">
+
+        <h1><a href="{{ url_for('get_post', post_id=post['id']) }}">{{ post['title'] }}</a></h1>
+        <p>контент</p>
+
+        <a href="{{ url_for('get_post', post_id=post['id']) }}" class="read-more">
+          Читать больше <span class="sr-only"></span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1
+            0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+  </article>
+        <h1>    </h1>
+
+     {% endfor %}
+</ul>
+
+</section>
+
+
+</body>
+</html>

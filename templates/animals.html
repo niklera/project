@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ animals.title }}</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <!-- стиль, который отсюда берется, используется в заголовке ниже -->
+
+    <link rel="stylesheet" href="{{url_for('static', filename='css/d.css') }}">
+</head>
+
+
+<body>
+<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <svg class="bi me-2" width="40" height="32">
+            <use xlink:href="#bootstrap"></use>
+        </svg>
+        <span class="fs-4"><ya-tr-span data-index="2-0" data-translated="true" data-source-lang="en"
+                                       data-target-lang="ru" data-value="Simple header"
+                                       data-translation="Простой заголовок" data-ch="0" data-type="trSpan"
+                                       style="visibility: initial !important;"><h1>Красная книга</h1></ya-tr-span></span>
+    </a>
+<ul>
+
+    </ul>
+
+        </a></li>
+        <a href="{{ url_for('new_post') }}"><button>Создать новую запись</button></a>
+
+    <ul>
+        {% for post in posts %}
+        <li><a href="{{ url_for('get_post', post_id=post['id']) }}">{{ post['title'] }}</a></li>
+        {% endfor %}
+    </ul>
+    </ul>
+</header>
+
+
+
+<div class="center-screen">
+    <h1>{{ animals.title }}</h1>
+    <p>{{ animals.content }}</p>
+    <a href="{{ url_for('index') }}">Вернуться на главную страницу</a>
+    <a href="/delete/{{ animals.id }}" class="btn btn-danger">Удалить</a>
+
+</div>
+<img src="https://gas-kvas.com/grafic/uploads/posts/2024-01/gas-kvas-com-p-belaya-vinetka-na-prozrachnom-fone-4.png" width="1500" height="280" >
+
+</body>
+
+</html>
